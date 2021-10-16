@@ -8,3 +8,28 @@ command which help me is:
  sudo apt-get purge --auto-remove krb5-user libpam-krb5 libpam-ccreds auth-client-config
  
  due to this all packages and related file uninstall in kerberos
+
+
+######check the principal in kadmin.local######
+
+ubuntu@ip-172-31-21-199:~$ sudo kadmin.local
+Authenticating as principal root/admin@US-EAST-2.COMPUTE.INTERNALHADOOP.COM with password.
+kadmin.local:  listprincs
+K/M@US-EAST-2.COMPUTE.INTERNALHADOOP.COM
+cm/admin@US-EAST-2.COMPUTE.INTERNALHADOOP.COM
+kadmin/admin@US-EAST-2.COMPUTE.INTERNALHADOOP.COM
+kadmin/changepw@US-EAST-2.COMPUTE.INTERNALHADOOP.COM
+kadmin/ip-172-31-21-199.us-east-2.compute.internal@US-EAST-2.COMPUTE.INTERNALHADOOP.COM
+kiprop/ip-172-31-21-199.us-east-2.compute.internal@US-EAST-2.COMPUTE.INTERNALHADOOP.COM
+krbtgt/US-EAST-2.COMPUTE.INTERNALHADOOP.COM@US-EAST-2.COMPUTE.INTERNALHADOOP.COM
+user1@US-EAST-2.COMPUTE.INTERNALHADOOP.COM
+
+#######change password of principal######
+
+
+kadmin.local:  cpw cm/kadmin
+Enter password for principal "cm/kadmin@US-EAST-2.COMPUTE.INTERNALHADOOP.COM":
+Re-enter password for principal "cm/kadmin@US-EAST-2.COMPUTE.INTERNALHADOOP.COM":
+change_password: Principal does not exist while changing password for "cm/kadmin@US-EAST-2.COMPUTE.INTERNALHADOOP.COM".
+
+
