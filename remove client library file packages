@@ -1,0 +1,10 @@
+remove client library file from the client(worker+host)
+to remove all packages which we install recently but we want to change it then cmmad is
+###here i install the client library file 
+sudo apt-get install krb5-user libpam-krb5 libpam-ccreds auth-client-config
+#####some problem happen in my realm so i want to reinstall it again by uninstalling it and install again for this the 
+command which help me is:
+
+ sudo apt-get purge --auto-remove krb5-user libpam-krb5 libpam-ccreds auth-client-config
+ 
+ due to this all packages and related file uninstall in kerberos
