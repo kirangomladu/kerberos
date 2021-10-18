@@ -1,0 +1,42 @@
+dfs.permission :this property checking which user connected and which owenership it has on hdfs
+
+go on hdfs --then configuaration ---serch---dfs.permission
+single security configartion  available on the hdfs
+this is not strong machnisam we check it by simple trick
+
+ubuntu@ip-172-31-14-109:~$ hdfs dfs -mkdir /data
+mkdir: Permission denied: user=ubuntu, access=WRITE, inode="/":hdfs:supergroup:drwxr-xr-x
+ubuntu@ip-172-31-14-109:~$  export HADOOP_USER_NAME=hdfs
+
+with trick
+ubuntu@ip-172-31-14-109:~$ export HADOOP_USER_NAME=hdfs
+ubuntu@ip-172-31-14-109:~$ hdfs dfs -mkdir /data
+ubuntu@ip-172-31-14-109:~$ hdfs dfs -ls /
+Found 3 items
+drwxr-xr-x   - hdfs supergroup          0 2021-10-15 19:58 /data
+drwxrwxrwt   - hdfs supergroup          0 2021-10-14 19:09 /tmp
+drwxr-xr-x   - hdfs supergroup          0 2021-10-14 19:09 /user
+ubuntu@ip-172-31-14-109:~$
+
+export HADOOP_USER_NAME=hdfs(i am hdfs)
+by using this line any user can define as user of hdfs and it get access
+
+there is no authentication machnisam dfs.permission check who are if you say that i am hdfs with ubuntu then it start bealieving on you
+because there is no strong authentication tool for hdfs.no in
+
+hence in the production its highly compalsary to have kerberos for authentication.
+
+7 node cluster:
+1 cm 
+3 master 
+3 worker 
+deploy kerberos cluster 
+set up:
+we put kerberos in cm and on remaining client library
+
+rng tool:
+    on keys hash function are run then developed key 
+rng help randomness
+
+configuration:realm is simillar to DNS
+(any user or service who w

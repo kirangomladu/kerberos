@@ -1,0 +1,62 @@
+client side history command
+
+  1  source /etc/rc.local
+    2  cd
+    3  cat /usr/share/doc/krb5-kdc/examples/kdc.conf
+    4  find / -name kdc.conf   (for cheking this file is present or not)
+    5  find / -name krb5*        (check the file is present or not)
+    6  cat /etc/krb5.conf         (
+    7  vi /etc/krb5.conf
+    8  service krb5-kdc restart
+    9  sudo apt-get purge --auto-remove krb5-user libpam-krb5 libpam-ccreds auth-client-config
+   10  sudo apt-get install krb5-user libpam-krb5 libpam-ccreds auth-client-config
+   11  vi /etc/krb5.conf
+   12  sudo /etc/init.d/krb5-admin-server restart
+   13  kinit -p cm/admin
+   14  kinit -p user1
+   15  kinit -p cm/admin
+   16  klist
+   17  history
+
+
+server side history command:
+   1  source /etc/rc.local
+    2  vi krb5.conf
+    3  sudo nano /etc/krb5kdc/kadm5.acl  (in this acl file we give full authorization to user/so theat we add user in this acl file
+    4  sudo /etc/init.d/krb5-admin-server restart    (after changing configaration file we want to restart the servce )
+    5  cd /usr/share/doc/krb5-kdc/examples/kdc.conf
+    6  cat /usr/share/doc/krb5-kdc/examples/kdc.conf  (in that we change myrealm to hadoop.com)
+    7  vi /usr/share/doc/krb5-kdc/examples/kdc.conf     
+    8  service krb5-kdc start           (for confirmation this service is started or not)
+    9  update-rc.d krb5-kdc defaults     (it make your file defult)
+   10  service krb5-admin-server start   (start the service)
+   11  service krb5-kdc restart
+   12  service krb5-kdc start
+   13  systemctl status krb5-kdc.service
+   14  service krb5-kdc stop
+   15  service krb5-kdc start
+   16  journalctl -xe
+   17  nano /etc/krb5.conf
+   18  service krb5-kdc restart
+   19  nano /etc/krb5.conf
+   20  vi /etc/krb5.conf          (in that change it private dns chage realm name mension hadoop.com                                    in domain)
+   21  kdb5_util create -s
+   22  service krb5-kdc start
+   23  service kadmin start        (start kadmin to check its working or not)
+   24  chkconfig kadmin on         (configuration on )
+   25  kadmin.local
+   26  cd
+   27  service kadmin status          (check status)
+   28  chkconfig kadmin on
+   29             
+   30  kadmin.local
+   31  sudo nano /etc/krb5kdc/kadm5.acl
+   32  sudo /etc/init.d/krb5-admin-server restart
+   33  cat /usr/share/doc/krb5-kdc/examples/kdc.conf
+   34  cat /etc/krb5.conf
+   35  sudo /etc/init.d/krb5-admin-server restart
+   36  kinit -p cm/admin              (add the principal user) 
+   37  kadmin.local
+   38  kinit
+   39  kinit -p user1
+   40  history
