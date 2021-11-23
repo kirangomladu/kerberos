@@ -54,6 +54,37 @@ kinit -p user1
 klist
 
 
+same is done on other worker node
+install kerberos client and
+
+
+now integrate the cm with kdc
+now go to cm ====administrration ===security ==enable kerberos
+
+
+qustion on the what is prerequisite for kerberos on cm
+
+1)set up working  kdc set
+2)non 0 tickit time
+3)admin principal for cloudera manager
+4)kerberos client library install on all
+
+continue
+type of kdc
+
+admin server :private dns cm
+server
+max life time=7
+
+cm principal:cm/admin
+password :123
+successfull import credential
+
+data node port change after enabling security
+
+complite configaration is done by kerberos
+
+
 #### Troubleshooting
 
 If you see entropythreshold issue in CM fire below command on CM host
